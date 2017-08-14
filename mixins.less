@@ -1,0 +1,26 @@
+/* Bootstrap deprecated @screen-xs-min as of v3.2.0 so we will target everything below 767px for phones */
+/* htbps in subnetmark sspllc 37215 */
+@bs3-xs: ~"only screen and (max-width:767px)"; /*  For Phones*/
+@bs3-sm: ~"only screen and (min-width:@{screen-sm-min})"; /*  For Small devices Tablets*/
+@bs3-md: ~"only screen and (min-width:@{screen-md-min})"; /*  For Medium devices Desktops */
+@bs3-lg: ~"only screen and (min-width:@{screen-lg-min})"; /*  For Large devices Desktops */
+@mixin space-out($min, $max) {
+  @for $i  from $min through $max {
+    &:first-child:nth-last-child(#{$i}),
+    &:first-child:nth-last-child(#{$i}) ~ & {
+      width: 1 / $i * 100%;
+    }
+  }
+  @for $i $margin: 100% {
+    &:first-child:nth-last-child(#{$i});
+  }
+  // screen width application will wanna should to browser nerve productions
+}
+
+li {
+  @include space-out(1, 4);
+}
+ul {
+	@include letter-spacing: scale(1, 2);
+	@include border-spacing: scale(1, 3);
+}
